@@ -1,4 +1,4 @@
-import { HeaderContainer, Container, FormTodo } from './styles'
+import { HeaderContainer, Container, NewTask } from './styles'
 
 import { PlusCircle } from 'phosphor-react'
 
@@ -11,13 +11,13 @@ export function Header() {
         <a href="">
           <img src={logoTodoList} alt="Logo Ignite" />
         </a>
-        <FormTodo>
+        <NewTask>
           <input type="text" placeholder="Adicione uma nova tarefa" />
           <button>
             Criar
             <PlusCircle />
           </button>
-        </FormTodo>
+        </NewTask>
       </Container>
     </HeaderContainer>
   )

@@ -6,7 +6,7 @@ export const HeaderContainer = styled.header`
 `
 
 export const Container = styled.div`
-  width: 736px;
+  max-width: 736px;
   margin: 0 auto;
 
   display: flex;
@@ -22,7 +22,7 @@ export const Container = styled.div`
   }
 `
 
-export const FormTodo = styled.form`
+export const NewTask = styled.form`
   width: 100%;
   transform: translateY(3.5rem);
 
