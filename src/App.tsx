@@ -1,7 +1,12 @@
+import { ThemeProvider } from 'styled-components'
+import { GlobalStyle } from './styles/global'
+import { defaultTheme } from './styles/themes/default'
+
 export function App() {
   return (
-    <div>
-      <h1>Toto App</h1>
-    </div>
+    <ThemeProvider theme={defaultTheme}>
+      <h1>Todo App</h1>
+      <GlobalStyle />
+    </ThemeProvider>
   )
 }
