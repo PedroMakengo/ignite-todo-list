@@ -27,7 +27,6 @@ export const TaskDone = styled(BaseTask)`
 `
 
 export const Counter = styled.span`
-  width: 25px;
   height: 19px;
   background: ${(props) => props.theme['gray-400']};
 
@@ -38,6 +37,8 @@ export const Counter = styled.span`
 
   color: ${(props) => props.theme['gray-100']};
   font-size: 12px;
+
+  padding: 2px 8px;
 `
 
 export const EmptyTask = styled.div`
