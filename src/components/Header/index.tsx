@@ -34,7 +34,7 @@ export function Header({ createNewTask, newTask, setNewTask }: HeaderProps) {
             required
           />
           <button type="submit" disabled={isNewTaskEmpty}>
-            Criar
+            <span>Criar</span>
             <PlusCircle />
           </button>
         </NewTaskForm>

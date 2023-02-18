@@ -20,6 +20,10 @@ export const Container = styled.div`
     display: flex;
     align-items: flex-end;
   }
+  @media (max-width: 780px) {
+    width: 100%;
+    padding: 0 1rem;
+  }
 `
 
 export const NewTaskForm = styled.form`
@@ -84,6 +88,14 @@ export const NewTaskForm = styled.form`
     &:disabled {
       filter: brightness(0.7);
       cursor: not-allowed;
+    }
+  }
+
+  @media (max-width: 780px) {
+    button {
+      span {
+        display: none;
+      }
     }
   }
 `
