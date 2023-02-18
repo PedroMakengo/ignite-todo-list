@@ -17,7 +17,7 @@ export function App() {
   const [tasks, setTasks] = useState<Tasks[]>(
     !localStorage.getItem('@ignite-todo-1.0.0')
       ? []
-      : JSON.parse(localStorage.getItem('@ignite-todo-1.0.0'))
+      : JSON.parse(localStorage.getItem('@ignite-todo-1.0.0') as any)
   )
 
   useEffect(() => {
