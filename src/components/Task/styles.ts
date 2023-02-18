@@ -74,13 +74,19 @@ export const ItemTask = styled.div`
   padding: 1rem;
   border-radius: 8px;
 
-  p {
-    flex: 1;
-    color: ${(props) => props.theme['gray-100']};
-  }
-
   button {
     background: transparent;
     border: 0;
   }
+`
+
+export const LineTask = styled.p`
+  flex: 1;
+  color: ${(props) => props.theme['gray-100']};
+`
+
+export const LineTaskCompleted = styled.p`
+  flex: 1;
+  text-decoration-line: line-through;
+  color: ${(props) => props.theme['gray-300']};
 `

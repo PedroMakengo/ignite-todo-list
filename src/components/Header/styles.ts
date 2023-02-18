@@ -22,7 +22,7 @@ export const Container = styled.div`
   }
 `
 
-export const NewTask = styled.form`
+export const NewTaskForm = styled.form`
   width: 100%;
   transform: translateY(3.5rem);
 
@@ -38,6 +38,7 @@ export const NewTask = styled.form`
     background: ${(props) => props.theme['gray-500']};
     border-radius: 8px;
     border: 1px solid ${(props) => props.theme['gray-700']};
+    color: ${(props) => props.theme['gray-300']};
 
     &::placeholder {
       color: ${(props) => props.theme['gray-300']};
@@ -78,6 +79,11 @@ export const NewTask = styled.form`
     &:hover {
       cursor: pointer;
       background: ${(props) => props.theme['blue']};
+    }
+
+    &:disabled {
+      filter: brightness(0.7);
+      cursor: not-allowed;
     }
   }
 `

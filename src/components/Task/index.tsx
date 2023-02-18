@@ -7,22 +7,38 @@ import {
   TaskDone,
   ListTask,
   ItemTask,
+  LineTask,
+  LineTaskCompleted,
 } from './styles'
 
 import { ClipboardText, Trash, Circle, CheckCircle } from 'phosphor-react'
+import { Tasks } from '../../App'
 
-export function Task() {
-  const tasks = [1]
+interface TaskProps {
+  tasks: Tasks[]
+  onClickIsCompleted: (taskPositionAndArray: number) => void
+  ondDeleteTask: (id: string) => void
+}
+
+export function Task({ tasks, ondDeleteTask, onClickIsCompleted }: TaskProps) {
+  let countCompleted = 0
+  for (let task of tasks) {
+    if (task.isCompleted === true) {
+      countCompleted++
+    }
+  }
   return (
     <Container>
       <TaskInfo>
         <TaskCreated>
           <strong>Total criadas</strong>
-          <Counter>0</Counter>
+          <Counter>{tasks.length}</Counter>
         </TaskCreated>
         <TaskDone>
           <strong>Concluídas</strong>
-          <Counter>0 de 0</Counter>
+          <Counter>
+            {countCompleted} de {tasks.length}
+          </Counter>
         </TaskDone>
       </TaskInfo>
 
@@ -34,54 +50,35 @@ export function Task() {
         </EmptyTask>
       ) : (
         <ListTask>
-          <ItemTask>
-            <button title="Checar o botão">
-              <Circle size={24} weight="bold" color="#4eabde" />
-            </button>
-            <p>
-              Integer urna interdum massa libero auctor neque turpis turpis
-              semper. Duis vel sed fames integer.
-            </p>
-            <button title="Deletar task">
-              <Trash size={24} color="#808080" />
-            </button>
-          </ItemTask>
-          <ItemTask>
-            <button title="Checar o botão">
-              <Circle size={24} weight="bold" color="#4eabde" />
-            </button>
-            <p>
-              Integer urna interdum massa libero auctor neque turpis turpis
-              semper. Duis vel sed fames integer.
-            </p>
-            <button title="Deletar task">
-              <Trash size={24} color="#808080" />
-            </button>
-          </ItemTask>
-          <ItemTask>
-            <button title="Checar o botão">
-              <Circle size={24} weight="bold" color="#4eabde" />
-            </button>
-            <p>
-              Integer urna interdum massa libero auctor neque turpis turpis
-              semper. Duis vel sed fames integer.
-            </p>
-            <button title="Deletar task">
-              <Trash size={24} color="#808080" />
-            </button>
-          </ItemTask>
-          <ItemTask>
-            <button title="Checar o botão">
-              <CheckCircle size={24} weight="fill" color="#5E60CE" />
-            </button>
-            <p>
-              Integer urna interdum massa libero auctor neque turpis turpis
-              semper. Duis vel sed fames integer.
-            </p>
-            <button title="Deletar task">
-              <Trash size={24} color="#808080" />
-            </button>
-          </ItemTask>
+          {tasks.map((task, index) => {
+            return (
+              <ItemTask key={index}>
+                <button
+                  title="Checar o botão"
+                  type="button"
+                  onClick={() => onClickIsCompleted(index)}
+                >
+                  {!task.isCompleted ? (
+                    <Circle size={24} weight="bold" color="#4eabde" />
+                  ) : (
+                    <CheckCircle size={24} weight="fill" color="#5E60CE" />
+                  )}
+                </button>
+                {!task.isCompleted ? (
+                  <LineTask>{task.task}</LineTask>
+                ) : (
+                  <LineTaskCompleted>{task.task}</LineTaskCompleted>
+                )}
+                <button
+                  title="Deletar task"
+                  type="button"
+                  onClick={() => ondDeleteTask(task.id)}
+                >
+                  <Trash size={24} color="#808080" />
+                </button>
+              </ItemTask>
+            )
+          })}
         </ListTask>
       )}
     </Container>
